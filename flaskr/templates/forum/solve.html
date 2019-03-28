@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Problems{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('forum.dashboard') }}">Show contests</a>
+<a href="{{ url_for('forum.view_profile',id=g.user['username']) }}">My Profile</a>
+<a href="{{ url_for('forum.add_problem') }}"">Add problem</a>
+   <a href="#">My friends</a><br>
+     {% for post in posts %}
+
+                 <h4>{{ post['title'] }}</h4>
+                 <label><i>{{ post['body'] }}</i></label>
+                 <label><a href="{{ url_for('forum.submit',id=post['id']) }}" class="pull-right btn btn-block btn-danger" > Submit   </a></label>
+
+       {% if not loop.last %}
+     </hr>
+       {% endif %}
+     {% endfor %}
+{% endblock %}

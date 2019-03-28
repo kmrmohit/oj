@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('forum.solve') }}">Solve problems</a>
+<a href="{{ url_for('forum.dashboard') }}">Show contests</a>
+<a href="{{ url_for('forum.view_profile',id=g.user['username']) }}">My Profile</a>
+   <a href="#">My friends</a><br>
+   <body>
+     <form method="post">
+     <label for="body">Question</label>
+     <textarea name="qbody" id="qbody">{{ request.form['body'] or posts['body'] }}</textarea>
+     <label for="body">Your answer here</label>
+     <textarea name="body" id="body"></textarea>
+     <input type="submit" value="Save">
+     </form>
+     <hr>
+   </body>
+     </hr>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+   <a href="{{ url_for('forum.solve') }}">Solve problems</a>
+   <a href="{{ url_for('forum.dashboard') }}">Show contests</a>
+   <a href="{{ url_for('forum.view_profile',id=g.user['username']) }}">My Profile</a>
+   <a href="#">My friends</a><br>
+   <h3>Username: {{ g.user['username']}}</h3>
+   <h3>Email: {{g.user['emailid'] }} </h3>
+     </hr>
+{% endblock %}

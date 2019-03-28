@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('forum.solve') }}">Solve problems</a>
+<a href="{{ url_for('forum.dashboard') }}">Show contests</a>
+<a href="{{ url_for('forum.view_profile',id=g.user['username']) }}">My Profile</a>
+  {% for post in posts %}
+              <h4>{{ post['question_id'] }}</h4>
+              <i>{{ post['body'] }}</i>
+              <i>{{ post['created'] }}</i>
+
+    {% if not loop.last %}
+  </hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
